@@ -1,0 +1,89 @@
+title: Optim INRIA
+
+module_folders:
+
+input_file: ./problem_inputs.xml
+output_file: ./problem_outputs.xml
+
+driver: om.ScipyOptimizeDriver(tol=1e-6, optimizer='SLSQP')
+
+model:
+
+  nonlinear_solver: om.NonlinearBlockGS(maxiter=100, atol=1e-2)
+  linear_solver: om.DirectSolver()
+
+  geometry:
+    id: fastoad.geometry.legacy
+  weight:
+    id: fastoad.weight.legacy
+  mtow:
+    id: fastoad.mass_performances.compute_MTOW
+  hq_tail_sizing:
+    id: fastoad.handling_qualities.tail_sizing
+  hq_static_margin:
+    id: fastoad.handling_qualities.static_margin
+  aerodynamics_highspeed:
+    id: fastoad.aerodynamics.highspeed.legacy
+  aerodynamics_lowspeed:
+    id: fastoad.aerodynamics.lowspeed.legacy
+  aerodynamics_takeoff:
+    id: fastoad.aerodynamics.takeoff.legacy
+  aerodynamics_landing:
+    id: fastoad.aerodynamics.landing.legacy
+    use_xfoil: false
+
+  performance:
+    id: fastoad.performances.mission
+    propulsion_id: fastoad.wrapper.propulsion.rubber_engine
+    mission_file_path: ./timestep_mission.yml
+    out_file: ./flight_points.csv
+    adjust_fuel: true
+    is_sizing: true
+  wing_area:
+    id: fastoad.loop.wing_area
+
+optimization:
+  design_variables:
+    - name: data:geometry:wing:MAC:at25percent:x
+      lower: 16.0
+      upper: 18.0
+    - name: data:geometry:wing:aspect_ratio
+      lower: 5.0
+      upper: 11.0
+    - name: data:geometry:horizontal_tail:aspect_ratio
+      lower: 1.5
+      upper: 6
+    - name: data:geometry:wing:taper_ratio
+      lower: 0.0
+      upper: 1.0
+    - name: data:geometry:wing:sweep_25
+      lower: 20.0
+      upper: 30.0
+    - name: data:propulsion:MTO_thrust
+      lower: 100000.
+      upper: 140000.
+# Maybe the variables with the least influence
+#    - name: data:geometry:vertical_tail:aspect_ratio
+#      lower: 1.5
+#      upper: 6
+
+  constraints:
+    - name: data:geometry:wing:span
+      upper: 36.0
+    - name: data:handling_qualities:static_margin
+      lower: 0.05
+      upper: 0.1
+
+  objective:
+    - name: data:mission:sizing:needed_block_fuel
+      scaler: 1.e-4
+
+
+pymoo:
+  objective:
+    - name: data:mission:sizing:needed_block_fuel
+      scaler: 1.e-4
+    - name: data:weight:aircraft:OWE
+      scaler: 1.e-4
+    - name: data:mission:sizing:climb:duration
+      scaler: 1.e-2
