@@ -62,10 +62,6 @@ optimization:
     - name: data:propulsion:MTO_thrust
       lower: 100000.
       upper: 140000.
-# Maybe the variables with the least influence
-#    - name: data:geometry:vertical_tail:aspect_ratio
-#      lower: 1.5
-#      upper: 6
 
   constraints:
     - name: data:geometry:wing:span
@@ -77,13 +73,3 @@ optimization:
   objective:
     - name: data:mission:sizing:needed_block_fuel
       scaler: 1.e-4
-
-
-pymoo:
-  objective:
-    - name: data:mission:sizing:needed_block_fuel
-      scaler: 1.e-4
-    - name: data:weight:aircraft:OWE
-      scaler: 1.e-4
-    - name: data:mission:sizing:climb:duration
-      scaler: 1.e-2

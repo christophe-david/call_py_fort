@@ -1,0 +1,1 @@
+gfortran -I/usr/local/include -Wl,-rpath /usr/local/lib -L/usr/local/lib src/main.f90 -lcallpy -o run_fastoad

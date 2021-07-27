@@ -1,9 +1,10 @@
 import fastoad.api as oad
-
+import os.path as pth
 
 def run_fastoad(STATE):
 
-    conf = oad.FASTOADProblemConfigurator("oad_process_INRIA.yml")
+    conf_file = pth.join(pth.dirname(__file__), "oad_process_INRIA.yml")
+    conf = oad.FASTOADProblemConfigurator(conf_file)
     problem = conf.get_problem(read_inputs=True)
     problem.setup()
     problem["data:geometry:wing:MAC:at25percent:x"] = STATE["wing_position"]
