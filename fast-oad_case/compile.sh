@@ -1,1 +1,2 @@
+export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib" # fix for recent macOS from https://stackoverflow.com/a/65428700/16488238
 gfortran -I/usr/local/include -Wl,-rpath /usr/local/lib -L/usr/local/lib src/main.f90 -lcallpy -o run_fastoad
