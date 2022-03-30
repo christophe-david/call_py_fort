@@ -9,7 +9,8 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-fast-oad = "^1.0.4"
+fast-oad = "1.0.5"
+openmdao = "3.17"
 
 [tool.poetry.dev-dependencies]
 numpy = "^1.21.0"
