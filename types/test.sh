@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-rm -f *.so
+rm -f *.so *.mod *.o
 bash ./compile.sh
 python main.py
