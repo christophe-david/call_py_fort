@@ -7,11 +7,13 @@ module demo
 
 contains
 
-    subroutine main()
+    subroutine main(get_value)
+        external get_value
         type(rectangle) :: rect1
+        real :: get_value
 
-        rect1%length = 7.0
-        rect1%width = 0.5
+        rect1%length = get_value("data:length")
+        rect1%width = get_value("data:width")
 
         print *, rect1%area()
     end subroutine main
