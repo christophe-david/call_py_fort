@@ -4,7 +4,8 @@ import demo
 from data_provider import DataProvider
 
 if __name__ == '__main__':
-    data = DataProvider({"data:length": sys.argv[1], "data:width": sys.argv[2]})
+    data = DataProvider({"data:length": float(sys.argv[1]), "data:width": float(sys.argv[2])})
 
-    demo.demo.main(data.get_value)
+    demo.data_reader.get_rectangle(data.get_value)
+    demo.demo.main()
     print("\n*** OK ***")

@@ -4,8 +4,8 @@ module shapes
     public rectangle
 
     type :: rectangle
-        real :: length
-        real :: width
+        real :: length = 0.0
+        real :: width = 0.0
     contains
         procedure :: area
     end type
