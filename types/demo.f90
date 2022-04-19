@@ -1,8 +1,12 @@
-subroutine main()
+module demo
     implicit none
-    real :: length
 
-    length = 5.0
-    print *, length
-end subroutine main
+contains
+    subroutine main()
+        real :: length
 
+        length = 5.0
+        print *, length
+    end subroutine main
+
+end module demo

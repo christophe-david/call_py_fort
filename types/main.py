@@ -1,4 +1,4 @@
 import demo
 
-demo.main()
+demo.demo.main()
 print("\n*** OK ***")
