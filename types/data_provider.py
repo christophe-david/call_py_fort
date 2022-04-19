@@ -1,4 +1,7 @@
-DATA = {"data:length": 9.0, "data:width": 1/3}
+from collections import UserDict
 
-def get_value(identifier):
-    return DATA[identifier]
+
+class DataProvider(UserDict):
+
+    def get_value(self, identifier):
+        return self[identifier]
