@@ -2,4 +2,4 @@
 
 rm -f *.so *.mod *.o
 bash ./compile.sh
-python main.py $*
+python main.py

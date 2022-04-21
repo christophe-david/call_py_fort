@@ -1,5 +1,5 @@
 module demo
-    use shapes
+    use custom_types
     use data_reader
     implicit none
 
@@ -8,7 +8,7 @@ contains
 
     subroutine main()
 
-        print *, rect1%area()
+        print *, struct0%multiplier()
     end subroutine main
 
 end module demo

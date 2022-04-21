@@ -1,5 +1,5 @@
 module data
-    use shapes
+    use custom_types
     implicit none
-    type(rectangle) :: rect1
+    type(structure) :: struct0
 end module data

@@ -1,22 +1,22 @@
 module data_reader
-    use shapes
+    use custom_types
     use data
     implicit none
 
 contains
 
-    subroutine get_rectangle(get_value)
+    subroutine get_structure(get_value)
         implicit none
         external get_value
-        real :: get_value
+        real, allocatable :: get_value(:)
 
         character(:), allocatable :: str
 
-        str = "data:length"
-        rect1%length = get_value(str)
-        str = "data:width"
-        rect1%width = get_value(str)
+        str = "data:array"
+        struct0%array_data = get_value(str)
+        str = "data:scalar"
+        struct0%sclara_data = get_value(str)
 
-    end subroutine get_rectangle
+    end subroutine get_structure
 
 end module data_reader
