@@ -1,0 +1,31 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module read_value__user__routines 
+    interface read_value_user_interface 
+        function get_size(str) result (n) ! in :data_reader:data_reader.f90:data_reader:read_value:unknown_interface
+            character*(:), allocatable :: str
+            integer :: n
+        end function get_size
+        subroutine get_value(str,value,n) ! in :data_reader:data_reader.f90:data_reader:read_value:unknown_interface
+            character*(:), allocatable :: str
+            real, dimension(n) :: value
+            integer :: n
+        end subroutine get_value
+    end interface read_value_user_interface
+end python module read_value__user__routines
+python module data_reader ! in 
+    interface  ! in :data_reader
+        module data_reader ! in :data_reader:data_reader.f90
+            subroutine read_value(get_size,get_value) ! in :data_reader:data_reader.f90:data_reader
+                use read_value__user__routines
+                external get_size
+                external get_value
+            end subroutine read_value
+        end module data_reader
+    end interface 
+end python module data_reader
+
+! This file was auto-generated with f2py (version:1.22.3).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e
