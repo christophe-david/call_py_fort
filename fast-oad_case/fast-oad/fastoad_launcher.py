@@ -9,7 +9,7 @@ def run_fastoad(STATE):
     problem.setup()
     problem["data:geometry:wing:MAC:at25percent:x"] = STATE["wing_position"]
     problem["data:geometry:wing:aspect_ratio"] = STATE["wing_aspect_ratio"]
-    problem["data:geometry:wing:taper_ratio"] = STATE["wing_taper_ratio"]
+    problem["data:geometry:wing:virtual_taper_ratio"] = STATE["wing_taper_ratio"]
     problem["data:geometry:wing:sweep_25"] = STATE["wing_sweep"]
     problem["data:geometry:horizontal_tail:aspect_ratio"] = STATE["horizontal_tail_aspect_ratio"]
     problem["data:propulsion:MTO_thrust"] = STATE["max_thrust"]

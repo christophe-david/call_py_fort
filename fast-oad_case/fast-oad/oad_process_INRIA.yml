@@ -53,7 +53,7 @@ optimization:
     - name: data:geometry:horizontal_tail:aspect_ratio
       lower: 1.5
       upper: 6
-    - name: data:geometry:wing:taper_ratio
+    - name: data:geometry:wing:virtual_taper_ratio
       lower: 0.0
       upper: 1.0
     - name: data:geometry:wing:sweep_25
