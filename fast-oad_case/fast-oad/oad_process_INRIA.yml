@@ -36,7 +36,7 @@ model:
     id: fastoad.performances.mission
     propulsion_id: fastoad.wrapper.propulsion.rubber_engine
     mission_file_path: ./timestep_mission.yml
-    out_file: ./flight_points.csv
+#    out_file: ./flight_points.csv
     adjust_fuel: true
     is_sizing: true
   wing_area:
