@@ -42,8 +42,8 @@ call get_state("climb_duration", climb_duration)
 ! Print all inputs/outputs using Python print() statement (not needed, just provided as example)
 ! call call_function("builtins", "print")
 
-! Re-Run FAST-OAD
-call set_state("wing_aspect_ratio", wing_aspect_ratio*1.05)
-call call_function("fastoad_launcher", "run_fastoad")
+! These lines do a second run of FAST-OAD that will use previous results as starting point.
+! call set_state("wing_aspect_ratio", wing_aspect_ratio + 1.0)
+! call call_function("fastoad_launcher", "run_fastoad")
 
 end program example
