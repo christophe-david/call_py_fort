@@ -5,12 +5,9 @@ module_folders:
 input_file: ./problem_inputs.xml
 output_file: ./problem_outputs.xml
 
-driver: om.ScipyOptimizeDriver(tol=1e-6, optimizer='SLSQP')
-
 model:
 
   nonlinear_solver: om.NonlinearBlockGS(maxiter=100, atol=1e-2)
-  linear_solver: om.DirectSolver()
 
   geometry:
     id: fastoad.geometry.legacy
@@ -41,6 +38,7 @@ model:
     is_sizing: true
   wing_area:
     id: fastoad.loop.wing_area
+
 
 optimization:
   design_variables:
@@ -73,3 +71,4 @@ optimization:
   objective:
     - name: data:mission:sizing:needed_block_fuel
       scaler: 1.e-4
+
