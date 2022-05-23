@@ -30,7 +30,7 @@
         <span_ratio is_input="True">0.8<!--ratio (width of flaps)/(total span)--></span_ratio>
       </flap>
       <horizontal_tail>
-        <aspect_ratio is_input="True">4.28778048454<!--aspect ratio of horizontal tail--></aspect_ratio>
+        <aspect_ratio is_input="True">-1.0e6<!--aspect ratio of horizontal tail--></aspect_ratio>
         <sweep_25 units="deg" is_input="True">28.0<!--sweep angle at 25% chord of horizontal tail--></sweep_25>
         <taper_ratio is_input="True">0.3<!--taper ratio of horizontal tail--></taper_ratio>
         <thickness_ratio is_input="True">0.1<!--thickness ratio of horizontal tail--></thickness_ratio>
@@ -53,15 +53,15 @@
         <thickness_ratio is_input="True">0.1<!--thickness ratio of vertical tail--></thickness_ratio>
       </vertical_tail>
       <wing>
-        <aspect_ratio is_input="True">9.48<!--wing aspect ratio--></aspect_ratio>
-        <sweep_25 units="deg" is_input="True">24.54<!--sweep angle at 25% chord of wing--></sweep_25>
-        <virtual_taper_ratio is_input="True">0.313<!--taper ratio of wing--></virtual_taper_ratio>
+        <aspect_ratio is_input="True">-1.0e6<!--wing aspect ratio--></aspect_ratio>
+        <sweep_25 units="deg" is_input="True">-1.0e6<!--sweep angle at 25% chord of wing--></sweep_25>
+        <virtual_taper_ratio is_input="True">-1.0e6<!--taper ratio of wing--></virtual_taper_ratio>
         <kink>
           <span_ratio is_input="True">0.375<!--ratio (Y-position of kink)/(semi-span)--></span_ratio>
         </kink>
         <MAC>
           <at25percent>
-            <x units="m" is_input="True">16.0<!--X-position of the 25% of mean aerodynamic chord of wing w.r.t. aircraft nose (drives position of wing along fuselage)--></x>
+            <x units="m" is_input="True">-1.0e6<!--X-position of the 25% of mean aerodynamic chord of wing w.r.t. aircraft nose (drives position of wing along fuselage)--></x>
           </at25percent>
         </MAC>
         <spar_ratio>
@@ -79,7 +79,7 @@
       </wing>
     </geometry>
     <propulsion>
-      <MTO_thrust units="N" is_input="True">117880.0<!--maximum thrust of one engine at sea level--></MTO_thrust>
+      <MTO_thrust units="N" is_input="True">-1.0e6<!--maximum thrust of one engine at sea level--></MTO_thrust>
       <rubber_engine>
         <bypass_ratio is_input="True">4.9<!--bypass ratio for rubber engine model--></bypass_ratio>
         <delta_t4_climb is_input="True">-50.0<!--As it is a delta, unit is K or &#176;C, but is not specified to avoid OpenMDAO making unwanted conversion--></delta_t4_climb>

@@ -10,11 +10,9 @@ def run_fastoad(STATE):
     problem = conf.get_problem(read_inputs=True)
     problem.setup()
 
-    if pth.exists(problem.output_file_path):
-        variables = oad.DataFile(problem.output_file_path)
-        for variable in variables:
-            if variable.is_input is not None:
-                problem.set_val(variable.name, variable.value, variable.units)
+    for name, value in STATE.items():
+        if ":" in name:
+            problem[name] = value
 
     problem["data:geometry:wing:MAC:at25percent:x"] = STATE["wing_position"]
     problem["data:geometry:wing:aspect_ratio"] = STATE["wing_aspect_ratio"]
@@ -24,10 +22,13 @@ def run_fastoad(STATE):
     problem["data:propulsion:MTO_thrust"] = STATE["max_thrust"]
 
     problem.run_model()
-    problem.write_outputs()
 
     STATE["span"] = problem["data:geometry:wing:span"]
     STATE["static_margin"] = problem["data:handling_qualities:static_margin"]
     STATE["block_fuel"] = problem["data:mission:sizing:needed_block_fuel"]
     STATE["OWE"] = problem["data:weight:aircraft:OWE"]
     STATE["climb_duration"] = problem["data:mission:sizing:main_route:climb:duration"]
+
+    data = oad.DataFile(oad.VariableList.from_problem(problem))
+    for variable in data:
+        STATE[variable.name] = variable.value
