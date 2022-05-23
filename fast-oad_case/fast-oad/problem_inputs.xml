@@ -175,7 +175,6 @@
         <wing>
           <mass>
             <k_mvo is_input="True">1.39<!--1.39 for Airbus type aircrafts--></k_mvo>
-            <k_voil is_input="True">1.05<!--1.00 if 4 engines / 1.05 if 2 or 3 engines / 1.10 if engines on fuselage--></k_voil>
           </mass>
         </wing>
       </airframe>

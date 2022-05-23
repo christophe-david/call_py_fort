@@ -22,6 +22,7 @@ def run_fastoad(STATE):
     problem["data:propulsion:MTO_thrust"] = STATE["max_thrust"]
 
     problem.run_model()
+    # problem.write_outputs()
 
     STATE["span"] = problem["data:geometry:wing:span"]
     STATE["static_margin"] = problem["data:handling_qualities:static_margin"]
