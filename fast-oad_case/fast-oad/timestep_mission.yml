@@ -48,7 +48,7 @@ phases:
         target:
           mach: constant
           altitude:
-            value: optimal_flight_level
+            value: optimal_altitude
   descent:
     engine_setting: idle
     polar: data:aerodynamics:aircraft:cruise
