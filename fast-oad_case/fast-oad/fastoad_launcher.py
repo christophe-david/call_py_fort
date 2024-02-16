@@ -9,10 +9,6 @@ def run_fastoad(STATE):
     problem = conf.get_problem(read_inputs=True)
     problem.setup()
 
-    for name, value in STATE.items():
-        if ":" in name:
-            problem[name] = value
-
     problem["data:geometry:wing:MAC:at25percent:x"] = STATE["wing_position"]
     problem["data:geometry:wing:aspect_ratio"] = STATE["wing_aspect_ratio"]
     problem["data:geometry:wing:virtual_taper_ratio"] = STATE["wing_taper_ratio"]
@@ -32,9 +28,6 @@ def run_fastoad(STATE):
     STATE["approach_speed"] = problem["data:TLAR:approach_speed"]
     STATE["additional_fuel"] = problem["data:weight:aircraft:additional_fuel_capacity"]
 
-    data = oad.DataFile(oad.VariableList.from_problem(problem))
-    for variable in data:
-        STATE[variable.name] = variable.value
 
 
 if __name__ == "__main__":
